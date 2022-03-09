@@ -1,0 +1,180 @@
+* {
+    font-family: "Poppins", sans-serif;
+}
+.shadow {    
+    box-shadow: 0px 0px 12px -2px #000;
+}
+:root {
+    --text-color: #1A3353;
+    --bg-color: #fafafb;
+    --box-color: #d8dce2;
+}
+body.dark {
+    --bg-color: #1b2531;
+    --text-color: #d6d7dc;
+    --box-color: #37404b;
+}
+body {
+    background-color: var(--bg-color);
+    transition: all ease 0.3s;
+}
+.intro {
+    width: 100%;
+    height: 320px;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    background-color: var(--box-color);
+    color: var(--text-color);
+    padding: 100px 32px 32px 32px;
+    transform: translateY(-50px);
+    animation: showDown ease 0.5s;
+    -webkit-animation: showDown ease 0.5s;
+    &__ava {
+        width: 150px;
+        height: 150px;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+        overflow: hidden;
+        float: left;
+        margin-right: 30px;
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+    &__name {
+        font-size: 3.5rem;
+        margin: 18px 12px 0 12px;
+    }
+    &__social {
+        display: flex;
+        margin-top: 63px;
+        justify-content: space-around;
+        margin-right: 10%;
+        > * {
+            width: 40px;
+            height: 40px;
+            text-decoration: none;
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            font-size: 2.5rem;
+            text-align: center;
+            line-height: 1.71em;
+            border-radius: 100px;
+            -webkit-border-radius: 100px;
+            -moz-border-radius: 100px;
+            -ms-border-radius: 100px;
+            -o-border-radius: 100px;
+            transition: all ease 0.2s;
+            overflow: hidden;
+            > span {
+                font-size: 2rem;
+                font-weight: 500;
+            }
+            &:hover {
+                color: var(--bg-color);
+                width: 150px;
+                line-height: 1.5em;
+                i {
+                    display: none;
+                }
+            }
+        } 
+        &-facebook:hover {
+            background-color: #3b5999;
+        }
+        &-instagram:hover {
+            background-color: #e1306c;
+        }
+        &-github:hover {
+            background-color: #000;
+        }
+    }
+    &__contact {
+        font-size: 1.6rem;
+        margin-right: 15%;
+        margin-left: 15%;
+        > * {
+            margin-top: 20px;
+            > * {
+                margin-bottom: 12px;
+            }
+            h5 {
+                font-size: 1.8rem;
+            }
+        }
+    }
+}
+.dark {
+    .intro {
+        &__social {
+            > * {
+                &:hover {
+                    color: var(--text-color);
+                }
+            }
+        }
+    }
+}
+@keyframes showDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(-50px)
+    }
+}
+// Dark mode Button
+input[type=checkbox] {
+    display: none;
+    &:checked + .dark-mode-button .circle {
+        transform: translateX(0);
+        background: linear-gradient(40deg, #FF0080,#FF8C00 70%);
+        &::before {
+            transform: scale(0);
+        }
+    }
+}
+$scale: 40px;
+.dark-mode-button {
+    display: block;
+    width: $scale * 2;
+    height: $scale;
+    border-radius:100px;
+    background-color: var(--box-color);
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    transition: all ease 0.3s;
+    cursor: pointer;
+    .circle {
+        width: 40%;
+        height: 80%;
+        border-radius: 50%;
+        transform: translateX(100%);
+        background: linear-gradient(40deg, #8983F7, #A3DAFB 70%);
+        transition: all ease 0.3s;
+        margin-top: $scale * 10/100;
+        margin-left: $scale * 20/100;
+        position: relative;
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 70%;
+            height: 70%;
+            border-radius: 100%;
+            background-color: var(--box-color);
+            transform: scale(1);
+            transform-origin: top right;
+            transition: all ease 0.3s;
+        }
+    }
+}
